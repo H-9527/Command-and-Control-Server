@@ -3,7 +3,9 @@
 ## Disclaimer:
 __This project is intended solely for educational and ethical purposes. The C2 server is designed to showcase Python programming skills and to aid in understanding the concepts of penetration testing and red team operations. The development of this project was inspired by concepts learned in a Udemy course, Design Command and Control using Python 3. Unauthorized use of this software on systems without explicit permission is strictly prohibited and may violate laws and regulations. This tool is provided "as is," without warranty of any kind, either expressed or implied. The author assumes no liability or responsibility for any misuse or damage caused by this software. Always use this tool in compliance with applicable laws and only in controlled environments or with explicit authorization.__
 ## Demonstration
+Some domenstrations of the C2 server function with pictures:
 
+[Demonstration.md](https://github.com/H-9527/Command-and-Control-Server/blob/main/Demonstration.md)
 ## Key Features of the C2 Server
 1. **Session Management**:
     - Tracks and manages multiple client sessions.
