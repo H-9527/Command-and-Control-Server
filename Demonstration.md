@@ -26,7 +26,7 @@
 6. match the md5 hash and its content
 [pic3]
 
-## client for windows version + flip the screen
+## The client for Windows + flip the screen
 1. client connection from windows machine and handling connection interrupted
 2. flip the screen upside down
 [pic4]
