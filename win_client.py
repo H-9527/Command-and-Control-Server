@@ -377,7 +377,7 @@ if __name__ == "__main__":
                 
         # "client flip screen" command to flip the screen of the client upside down (Windows only)
         elif command == "client flip screen" or command == "client flip":
-            screens = get_display()
+            screens = get_displays()
             
             for screen in screens:
                 screen_pos = screen.current_orientation
@@ -403,7 +403,7 @@ if __name__ == "__main__":
             
             try:
                 if path.isfile(file_path) and file_path.lower().endswith(".wav"):
-                    playsound(file_path, SND_ASYNC)
+                    PlaySound(file_path, SND_ASYNC)
                     post_to_server(f"{file_path} is playing on the {client}\n")
                 else:
                     post_to_server(f"{file_path} was not found on the {client} or the file is not end in .wav\n", is_red=1)
