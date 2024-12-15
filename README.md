@@ -70,3 +70,36 @@ __This project is intended solely for educational and ethical purposes. The C2 s
 	- **`datetime.datetime`**: Tracks and logs important server events with precise timestamps.
 12. **String and URL Parsing**:
 	- **`email.utils.unquote`** and **`urllib.parse.unquote_plus`**: Decode and parse encoded strings and URLs in HTTP requests.
+## **Available Server Commands**
+
+These commands are executed on the server to manage pwned sessions, files, and server operations:
+
+- **`server show clients`**: Display all active client sessions and the currently controlled session.
+- **`server control [ID]`**: Switch control to the client session with the specified ID.
+- **`server unzip [FILENAME]`**: Decrypt and extract a file from the incoming directory on the server.
+- **`server zip [FILENAME]`**: Encrypt and compress a file into the outgoing directory on the server.
+- **`server list [DIRECTORY]`**: List the contents of the specified directory on the server.
+- **`server shell`**: Launch a shell session directly on the server.
+- **`server exit`**: Safely shut down the server.
+- **`server help`**: Display detailed information about server commands.
+
+## **Available Client Commands**
+
+These commands are executed to interact with the controlled client:
+
+- **`client kill`**: Terminate the current client session.
+- **`client download [FILENAME]`**: Fetch a file from the server to the client.
+- **`client upload [FILENAME]`**: Send a file from the client to the server.
+- **`client zip [FILENAME]`**: Encrypt and compress a file on the client.
+- **`client unzip [FILENAME]`**: Decrypt and extract a file on the client.
+- **`client delay [SECONDS]`**: Configure the delay between reconnection attempts.
+- **`client get clipboard`**: Retrieve the current clipboard contents from the client.
+- **`client screenshot`**: Capture a screenshot of the client’s screen.
+- **`client type [TEXT]`**: Simulate typing the specified text on the client (works on Windows or Linux with X server or `uinput`).
+- **`client keylogger on / off`**: Start or stop the keylogger on the client (Windows or Linux with X server or `uinput`).
+- **`client display [image_file]`**: Display an image on the client’s screen.
+- **`client flip screen`**: Invert the client’s screen orientation (Windows only).
+- **`client spin`**: Rotate the client’s screen 90 degrees (Windows only).
+- **`client max volume`**: Set the client’s audio volume to maximum (Windows or Linux with X server or `uinput`).
+- **`client play [sound.wav]`**: Play a `.wav` sound file on the client (Windows only).
+- **`[command] &`**: Execute a command in the background on the client.
