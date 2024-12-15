@@ -1,6 +1,7 @@
 ## Starting the server
 ### The server supports multiple client connections
-[picture 1]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/1.server_start.png" alt="1" width="400"/>
+
 ### The server is able to switch among clients without ending the current session.
 1. show client sessions and the active session
 <img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/2-1.show_client.jpg" alt="2-1" width="400"/>
@@ -14,7 +15,7 @@
 
 
 ## Server help command
-[pic 0]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/0.server_help.png" alt="0" width="600"/>
 
 ## **Zip/Unzip a file** + **Upload to the server** + **start a server shell**
 1. on the client, create a test.txt file and calculate its md5 hash
