@@ -239,7 +239,6 @@ class C2handler(BaseHTTPRequestHandler):
                                linux with X server or uinput)
                             - client diplay [image_file]: Display an image on the client screen.
                             - client flip screen: Flip the client's screen upside down (Windows only).
-                            - client spin: Rotate the client's screen 90 degrees (Windows only).
                             - client max volume: Set the client's volume to maximum. (windows or linux with X server or uinput)
                             - client play [sound.wav]: Play a .wav sound file on the client (Windows only). 
                             - [command] & : Run a command in the background on the client.
