@@ -99,7 +99,6 @@ These commands are executed to interact with the controlled client:
 - **`client keylogger on / off`**: Start or stop the keylogger on the client (Windows or Linux with X server or `uinput`).
 - **`client display [image_file]`**: Display an image on the client’s screen.
 - **`client flip screen`**: Invert the client’s screen orientation (Windows only).
-- **`client spin`**: Rotate the client’s screen 90 degrees (Windows only).
 - **`client max volume`**: Set the client’s audio volume to maximum (Windows or Linux with X server or `uinput`).
 - **`client play [sound.wav]`**: Play a `.wav` sound file on the client (Windows only).
 - **`[command] &`**: Execute a command in the background on the client.
