@@ -4,7 +4,8 @@
 ### The server is able to switch among clients without ending the current session.
 1. show client sessions and the active session
 2. switch to session 3
-3. false input handling
+3. kill the current session
+4. false input handling
 [pic2]
 
 ## Server help command
