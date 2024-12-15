@@ -7,6 +7,9 @@
 3. false input handling
 [pic2]
 
+## Server help command
+[pic 0]
+
 ## **Zip/Unzip a file** + **Upload to the server** + **start a server shell**
 1. on the client, create a test.txt file and calculate its md5 hash
 2. zip the test.txt file
