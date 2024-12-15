@@ -1,3 +1,5 @@
+# to wrap it into one file : python3 -m PyInstaller -w -F win_client.py
+
 from requests import get, post, exceptions, put
 from multiprocessing import Process
 from time import sleep, time
