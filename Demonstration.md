@@ -14,3 +14,11 @@
 4. start a server shell and list the uploaded file
 5. unzip the file
 6. match the md5 hash and its content
+[pic3]
+
+## client for windows version + flip the screen
+1. client connection from windows machine and handling connection interrupted
+2. flip the screen upside down
+[pic4]
+3. the screen flipped
+[pic5]
