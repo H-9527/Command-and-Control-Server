@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 
+# to wrap it into elf file : python3 -m PyInstaller -F linux_client.py
 from requests import get, post, exceptions, put
 from multiprocessing import Process
 from time import sleep, time
