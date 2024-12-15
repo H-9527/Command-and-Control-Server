@@ -12,7 +12,7 @@ from pyperclip import PyperclipWindowsException, PyperclipException, paste
 from pynput.keyboard import Listener, Key, Controller
 from PIL import ImageGrab, Image
 from os import getenv, chdir, getcwd, path
-from rotatescreen import get_display
+from rotatescreen import get_displays
 from winsound import SND_ASYNC, playsound
 
 # get target $env variables as our client identifiyers
