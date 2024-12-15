@@ -3,10 +3,15 @@
 [picture 1]
 ### The server is able to switch among clients without ending the current session.
 1. show client sessions and the active session
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/2-1.show_client.jpg" alt="2-1" width="400"/>
+
 2. switch to session 3
-3. kill the current session
-4. false input handling
-[pic2]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/2-2.show_client.jpg" alt="2-2" width="400"/>
+
+3. kill the current session and handle false input
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/2-3.show_client.jpg" alt="2-3" width="400"/>
+
+
 
 ## Server help command
 [pic 0]
