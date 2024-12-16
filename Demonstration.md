@@ -39,7 +39,10 @@
 
 ## The client for Windows + flip the screen
 1. client connection from windows machine and handling connection interrupted
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/4.windows_client.png" alt="4" width="400"/>
+
 2. flip the screen upside down
-[pic4]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/4-1.windows_client.jpg" alt="4-1" width="400"/>
+
 3. the screen flipped
-[pic5]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/5.flip_screen.png" alt="5" width="400"/>
