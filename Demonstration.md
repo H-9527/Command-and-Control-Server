@@ -19,12 +19,23 @@
 
 ## **Zip/Unzip a file** + **Upload to the server** + **start a server shell**
 1. on the client, create a test.txt file and calculate its md5 hash
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-1.client_zip_upload.jpg" alt="3-1" width="400"/>
+
 2. zip the test.txt file
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-2.client_zip_upload.jpg" alt="3-2" width="400"/>
+
 3. upload the the zipped file to incoming directory on the server
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-3.client_zip_upload.jpg" alt="3-3" width="400"/>
+
 4. start a server shell and list the uploaded file
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-4.client_zip_upload.jpg" alt="3-4" width="400"/>
+
 5. unzip the file
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-5.client_zip_upload.jpg" alt="3-5" width="400"/>
+
 6. match the md5 hash and its content
-[pic3]
+<img src="https://github.com/H-9527/Command-and-Control-Server/blob/main/images/3-5.client_zip_upload.jpg" alt="3-5" width="400"/>
+
 
 ## The client for Windows + flip the screen
 1. client connection from windows machine and handling connection interrupted
