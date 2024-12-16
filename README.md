@@ -6,6 +6,12 @@ __This project is intended solely for educational and ethical purposes. The C2 s
 Some domenstrations of the C2 server function with pictures:
 
 [Demonstration.md](https://github.com/H-9527/Command-and-Control-Server/blob/main/Demonstration.md)
+## How to use
+1. Download server.py, setting.py, encryption.py.
+2. Download linux_client.py or win_client.py according to your OS.
+3. setup server ip adn listening port in the seting.py.
+4. run the server.py.
+5. run the client on your target machine.
 ## Key Features of the C2 Server
 1. **Session Management**:
     - Tracks and manages multiple client sessions.
